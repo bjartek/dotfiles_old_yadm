@@ -1,0 +1,10 @@
+set -g default_user bjartek
+
+set -x PATH $PATH $HOME/opt/google-cloud-sdk/bin
+
+function tower; gittower $argv[1]; end
+set -x DOCKER_TLS_VERIFY 1
+set -x DOCKER_HOST tcp://192.168.99.100:2376
+set -x DOCKER_CERT_PATH /Users/bjartek/.docker/machine/machines/default
+set -x DOCKER_MACHINE_NAME default
+

@@ -1,0 +1,24 @@
+# [Created by task 1.9.4 4/26/2011 23:22:06]
+# Taskwarrior program configuration file.
+# For more documentation, see http://taskwarrior.org or try 'man task', 'man task-faq',
+# 'man task-tutorial', 'man task-color', 'man task-sync' or 'man taskrc'
+
+# Here is an example of entries that use the default, override and blank values
+#   variable=foo   -- By specifying a value, this overrides the default
+#   variable=      -- By specifying no value, this means no default
+#   #variable=foo  -- By commenting out the line, or deleting it, this uses the default
+
+# Use the command 'task show' to see all defaults and overrides
+
+include /usr/local/share/doc/task/rc/holidays.nb-NO.rc
+calendar.holidays=sparse
+calendar.details=full
+calendar.details.report=long
+# Files
+data.location=~/.task
+
+report.list.dateformat=a Y-M-D
+report.long.dateformat=a Y-M-D
+
+
+include /usr/local/share/doc/task/rc/solarized-dark-256.theme

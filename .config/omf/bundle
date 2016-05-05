@@ -1,0 +1,7 @@
+package brew
+package fasd
+package fzf
+package osx
+package vi-mode
+theme bobthefish
+theme default

@@ -1,0 +1,112 @@
+bjartek.txt	     		 															    My help file for vim
+
+BJARTEK, my help file 	                      *bjartek*
+
+Author: Bjarte Stien Karlsen <http://bjartek.org>
+
+mapleader is space, the biggest key on the keyboard for the most common ops
+==============================================================================
+CONTENTS
+
+surround
+navigate
+ - unimaperd
+ - easy motion 
+ - gundo
+
+text
+- surround
+- repeat
+- align
+
+languages
+ - markdown
+ - bash
+ - go
+ - asciidoc
+
+overview
+ - tagbar
+ - nerdtree
+ - airline
+ - startify
+ - last edit position
+ - trailing space
+ - devicons
+
+code
+ - syntastic
+ - endwise
+ - matchit
+ - go
+ - neocomlpete
+ - neosnippets
+
+git
+ - dispatch
+ - fugitive
+ - merginal
+ - extradite
+ - gitguter
+
+search
+ - ag
+ - ctrlp
+
+
+change vim config
+
+space-ev, edit vimrc
+space-sv, source vimrc
+
+==============================================================================
+|surround|
+| ds | delete | ds" | remove the surrounding "
+| cs | change | cs"' | change surrouding " to '
+| ys | create | ysiw" | surround current word with "
+
+==============================================================================
+|Unimpared|
+
+all commands are perfixed with [ or ] the pointy ends singaling direction
+
+| a | args            | [a prev file, ]a next file, [A first file ]A last file
+| b | buffers
+| l | location list
+| q | quickfix
+| t | tag
+| f | file in dir     | only lower case
+| n | conflict marker | only lower case
+
+[a = prev
+[A = first
+]a = next
+]A = last
+
+
+==============================================================================
+BGIT																				*bgit*
+|futivive| |merginal| |extradite|
+
+all commands are <Leader>-g plus below
+
+|   | status, see |Gstatus| help for ops
+| a | git add curent changes in file
+| c | add file to index and commit
+| d | diff, see |do| and |dp| for diff ops
+| l | see git log, using |extradite|
+| b | work on merge/branches using |merginal|
+| p | push
+| u | pull
+| f | fetch
+| w | write in git and vim
+| r | read in git and vim
+| m | move in git and vim
+| g | grep
+
+==============================================================================
+ALIGN stuff																				*balign*
+|EasyAlign|
+
+
+vim:tw=78:fo=tcq2:ft=help:norl:

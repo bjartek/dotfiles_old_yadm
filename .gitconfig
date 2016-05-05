@@ -1,0 +1,95 @@
+[include]
+ path = .gitconfig.local
+
+[user]
+  email = bjarte@bjartek.org
+	name = Bjarte Stien Karlsen
+[github]
+  user = bjartek
+[core]
+  editor = vim
+	autocrlf = input
+	safecrlf = true
+	excludesfile = /Users/bjartek/.gitignore_global
+[alias]
+  aliases = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
+  bd = branch -d
+  br = branch
+  bra = branch -a
+  ca = commit -a -m
+  cb = checkout -b
+  ct = checkout --track -b
+  ci = commit
+  co = checkout
+  cp = cherry-pick
+  ff = !gitflow-feature-finish
+  fs = flow feature start
+  gcap = !sh -c 'git commit -v -a && git push'
+  gpp = !sh -c 'git pull; git push'
+  irb = rebase -i
+  last = log -1 HEAD
+  lc = !git-list-branch-commit
+  lg  = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(blue)%an%Creset' --abbrev-commit --date=relative
+  l2 = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+  me = merge
+  mes = merge --squash
+  mff = merge --no-ff
+  pa = add -p
+  rb = rebase
+  rh = reset --hard
+  st = status
+  sc = svn dcommit
+  sr = svn rebase
+  unstage = reset HEAD --
+  v=!open -a GitX 
+  visual=!open -a GitX 
+	standup = log --all --since yesterday --author bjarte@bjartek.org
+[gui]
+  recentrepo = /Users/bjartek/dev/bjartek.github.com
+[color]
+	ui = auto
+[remote "origin"]
+  push = HEAD
+[color]
+  branch = auto
+  diff = auto
+  status = auto
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+[branch "master"]
+	rebase = true
+[branch]
+	autosetuprebase = always
+[pull]
+	rebase = preserve
+[mergetool "Kaleidoscope"]
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustexitcode = true
+[merge]
+	tool = opendiff
+[diff]
+  renameLimit = 0
+	tool = opendiff
+[difftool "Kaleidoscope"]
+	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[difftool]
+	prompt = false
+[mergetool]
+	prompt = false
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /opt/homebrew-cask/Caskroom/sourcetree/1.9.7/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
