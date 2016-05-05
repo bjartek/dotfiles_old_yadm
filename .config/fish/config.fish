@@ -6,7 +6,6 @@ set -gx OMF_CONFIG ~/.config/omf
 
 set -U fish_key_bindings fish_vi_key_bindings
 set -g theme_date_format "+%H:%M"
-set -g default_user bjartek
 set -g theme_nerd_fonts yes
 
 source $OMF_CONFIG/local.fish
