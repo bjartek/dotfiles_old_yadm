@@ -1,3 +1,5 @@
 .ssh/id_dsa
 .config/keybase/config.json
 .config/omf/secret.fish
+bin/prowl
+.netrc
