@@ -1,0 +1,2 @@
+#!/bin/bash
+git branch --no-color | grep "*" | sed 's/^* \([a-z]*\)/\1/'

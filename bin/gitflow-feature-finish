@@ -1,0 +1,2 @@
+#!/bin/bash
+git flow feature finish `git branch --no-color | grep "*" | sed 's/^* feature\/\([a-z]*\)/\1/'`
