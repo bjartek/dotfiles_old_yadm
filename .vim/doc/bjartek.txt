@@ -8,10 +8,9 @@ mapleader is space, the biggest key on the keyboard for the most common ops
 ==============================================================================
 CONTENTS
 
-surround
 navigate
  - unimaperd
- - easy motion 
+ - easy motion
  - gundo
 
 text
@@ -50,8 +49,7 @@ git
  - gitguter
 
 search
- - ag
- - ctrlp
+ - fzf
 
 
 change vim config
@@ -85,8 +83,8 @@ all commands are perfixed with [ or ] the pointy ends singaling direction
 
 
 ==============================================================================
-BGIT																				*bgit*
-|futivive| |merginal| |extradite|
+GIT																									*bgit*
+|futivive| |merginal| |extradite| |gitgutter.txt| 
 
 all commands are <Leader>-g plus below
 
