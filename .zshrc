@@ -14,10 +14,13 @@ zplug "zsh-users/zsh-syntax-highlighting", nice:10
 zplug "zsh-users/zsh-completions"
 zplug "chmouel/oh-my-zsh-openshift"
 zplug "supercrabtree/k"
-zplug "junegunn/fzf", of:shell/key-bindings.zsh
+zplug "junegunn/fzf", use:shell/key-bindings.zsh
 zplug "joshuarubin/zsh-homebrew"
 zplug "b4b4r07/zsh-vimode-visual", 				    use:"*.sh"
 zplug "simnalamburt/shellder"
+zplug "hchbaw/auto-fu.zsh", at:pu
+zplug "zsh-users/zaw"
+zplug "plugins/fasd", from:oh-my-zsh
 
 # Add a bunch more of your favorite packages!
 
@@ -32,3 +35,4 @@ if ! zplug check --verbose; then
 fi
 
 zplug load
+alias j='fasd_cd -d'
