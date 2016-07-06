@@ -19,6 +19,7 @@ zplug "zsh-users/zsh-completions"
 zplug "chmouel/oh-my-zsh-openshift"
 zplug "supercrabtree/k"
 zplug "plugins/fasd", from:oh-my-zsh
+zplug "plugins/history", from:oh-my-zsh
 zplug "junegunn/fzf", use:shell/key-bindings.zsh
 zplug "lib/clipboard", from:oh-my-zsh, if:"[[ $OSTYPE == *darwin* ]]"
 zplug "joshuarubin/zsh-homebrew", if:"[[ $OSTYPE == *darwin* ]]"
@@ -28,7 +29,8 @@ source $HOME/.config/sourcecodepro.sh
 openshift_cluster(){
 			  local cluster=ose2
 				local project=aurora
-        echo -n "\uE895 $cluster \uE817 $project" 
+#        echo -n "\uE895 $cluster \uE817 $project" 
+        echo ""
 }
 
 POWERLEVEL9K_CUSTOM_OPENSHIFT="openshift_cluster"
@@ -83,3 +85,9 @@ fi
 
 export EDITOR='vim'
 
+export TERM=xterm-256color
+
+# Appends every command to the history file once it is executed
+setopt inc_append_history
+# # Reloads the history whenever you use it
+setopt share_history
