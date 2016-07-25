@@ -123,6 +123,8 @@ if has('conceal')
 endif
 
 "go keybings
+set autowrite
+let g:go_list_type = "quickfix" "prefer quicklist to locationlist
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
@@ -130,6 +132,7 @@ let g:go_highlight_interfaces = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_fmt_command = "goimports"
+let g:go_textobj_include_function_doc = 1
 let g:go_fmt_fail_silently = 1
 
 let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
@@ -146,6 +149,8 @@ Plug 'idanarye/vim-merginal' "git branch stuff
 Plug 'int3/vim-extradite' "git log stuff
 Plug 'airblade/vim-gitgutter'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'AndrewRadev/splitjoin.vim'
+
 
 Plug 'mhinz/vim-startify'
 
@@ -213,13 +218,27 @@ nmap <silent> <Leader>c :bdelete<CR>
 
 "go mappings
 au FileType go nmap <leader>r <Plug>(go-run)
-au FileType go nmap <leader>b <Plug>(go-build)
+" run :GoBuild or :GoTestCompile based on the go file
+function! s:build_go_files()
+  let l:file = expand('%')
+  if l:file =~# '^\f\+_test\.go$'
+    call go#cmd#Test(0, 1)
+  elseif l:file =~# '^\f\+\.go$'
+    call go#cmd#Build(0)
+  endif
+endfunction
+
+au FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
 au FileType go nmap <leader>t <Plug>(go-test)
-au FileType go nmap <leader>tc <Plug>(go-coverage)
+au FileType go nmap <leader>tt <Plug>(go-test-func)
+au FileType go nmap <leader>c <Plug>(go-coverage-toggle)
 
 au FileType go nmap <Leader>ds <Plug>(go-def-split)
 au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
 au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+au FileType go nmap <Leader>a <Plug>(go-alternate-edit)
+au FileType go nmap <Leader>as <Plug>(go-alternate-split)
+au FileType go nmap <Leader>av <Plug>(go-alternate-vertical)
 
 au FileType go nmap <Leader>do <Plug>(go-doc)
 au FileType go nmap <Leader>dov <Plug>(go-doc-vertical)
@@ -227,6 +246,8 @@ au FileType go nmap <Leader>dob <Plug>(go-doc-browser)
 au FileType go nmap <Leader>s <Plug>(go-implements)
 au FileType go nmap <Leader>e <Plug>(go-rename)
 au FileType go nmap <Leader>i <Plug>(go-info)
+noremap <leader>qq :cclose<CR>
+map <leader>q :cnext<CR>
 
 
 "git/fugitives
@@ -287,8 +308,8 @@ map <F3> :Tagbar<CR>
 map <F5> :GundoToggle<CR>
 
 " to focus tagbar or nerdtree easily
-nmap <silent> <Leader>a :TagbarOpen fj<CR>
-nmap <silent> <Leader>q :NERDTree<CR>
+nmap <silent> <Leader>z :TagbarOpen fj<CR>
+nmap <silent> <Leader>zz :NERDTree<CR>
 
 " navigate windws quicker
 nnoremap <C-h> <C-w>h
