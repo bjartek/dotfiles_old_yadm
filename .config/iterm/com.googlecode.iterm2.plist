@@ -872,7 +872,7 @@
 		</dict>
 	</dict>
 	<key>Default Bookmark Guid</key>
-	<string>8E900CAB-5155-4DBF-B8D8-34F4B9ED6F78</string>
+	<string>63B288B1-902E-4561-9A5F-2AB8D238034B</string>
 	<key>DimBackgroundWindows</key>
 	<false/>
 	<key>DimInactiveSplitPanes</key>
@@ -975,13 +975,13 @@
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>1684 144 599 410 0 0 2560 1417 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>1399 811 606 456 0 0 2560 1417 </string>
+	<string>1946 1268 599 502 0 0 3200 1800 </string>
 	<key>NSWindow Frame SUStatusFrame</key>
 	<string>1054 792 384 129 0 0 2560 1417 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>970 769 620 392 0 0 2560 1417 </string>
+	<string>1290 1039 620 392 0 0 3200 1777 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>1052 555 650 502 0 0 2560 1417 </string>
+	<string>1052 543 650 502 0 0 3200 1777 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>1089 831 650 502 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
@@ -1541,7 +1541,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>SauceCodeProNerdFontCompleteMono---Regular 14</string>
+			<string>SourceCodePro+Powerline+AwesomeRegular 14</string>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
@@ -2309,7 +2309,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>MicrosoftSansSerif 14</string>
+			<string>SauceCodeProNerdFontCompleteMono---Regular 14</string>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
@@ -2486,6 +2486,8 @@
 			<string>/Users/bjartek</string>
 		</dict>
 	</array>
+	<key>NoSyncConfirmBeta</key>
+	<true/>
 	<key>NoSyncDoNotWarnBeforeMultilinePaste</key>
 	<true/>
 	<key>NoSyncDoNotWarnBeforeMultilinePaste_selection</key>
@@ -2574,11 +2576,11 @@
 	<key>SUFeedAlternateAppNameKey</key>
 	<string>iTerm</string>
 	<key>SUFeedURL</key>
-	<string>https://iterm2.com/appcasts/testing3.xml?shard=65</string>
+	<string>https://iterm2.com/appcasts/testing.xml?shard=65</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2016-05-24T20:11:43Z</date>
+	<date>2016-07-15T20:26:28Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>
@@ -2634,6 +2636,6 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>2.9.20160510</string>
+	<string>3.0.4</string>
 </dict>
 </plist>
