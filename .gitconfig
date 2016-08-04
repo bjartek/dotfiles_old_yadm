@@ -1,6 +1,7 @@
 [include]
  path = .gitconfig.local
-
+[commit]
+ template = ~/.gitmessage
 [user]
   email = bjarte@bjartek.org
 	name = Bjarte Stien Karlsen
