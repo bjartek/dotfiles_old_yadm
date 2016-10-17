@@ -23,6 +23,8 @@ Plug 'fatih/molokai'
 
 
 Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
 
 Plug 'mileszs/ack.vim'
 
