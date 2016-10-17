@@ -6,7 +6,6 @@ fi
 export EDITOR='vim'
 export TERM=xterm-256color
 
-
 # Essential
 source ~/.zplug/init.zsh
 
@@ -17,7 +16,7 @@ zplug "zsh-users/zsh-history-substring-search", nice:19
 zplug "zsh-users/zsh-syntax-highlighting", nice:18
 
 zplug "zsh-users/zsh-completions"
-zplug "chmouel/oh-my-zsh-openshift"
+#zplug "chmouel/oh-my-zsh-openshift"
 zplug "supercrabtree/k"
 zplug "plugins/fasd", from:oh-my-zsh
 zplug "lib/history", from:oh-my-zsh
@@ -84,4 +83,12 @@ if zplug check zsh-users/zsh-history-substring-search; then
   bindkey "$terminfo[kcud1]" history-substring-search-down
 fi
 
+export LANG=en_US.UTF-8
+export MAVEN_OPTS="-Xmx3072m -XX:MaxPermSize=512m"
+export GOPATH=$HOME/go
+export PATH=$HOME/bin:$PATH;
+export PATH=$PATH:$GOPATH/bin:/usr/local/opt/go/libexec/bin
 
+export PS4='(${BASH_SOURCE}:${LINENO}): - [${SHLVL},${BASH_SUBSHELL},$?] $ '
+
+source <(oc completion zsh)

@@ -322,3 +322,4 @@ nmap <C-[> <C-T>
 "spellcheck and tw for git commits 
 autocmd Filetype gitcommit setlocal spell textwidth=72
 
+set sw=2

@@ -14,7 +14,7 @@ source $OMF_CONFIG/secret.fish
 # Load oh-my-fish configuration.
 source $OMF_PATH/init.fish
 
-set -x PATH $PATH $HOME/bin
+				set -x PATH $PATH $HOME/bin
 
 set -x LANG en_US.UTF-8
 
