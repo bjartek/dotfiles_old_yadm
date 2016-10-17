@@ -3,8 +3,8 @@
 
 "load plug vim if we do not have it yet
 if empty(glob('~/.vim/autoload/plug.vim'))
-   !mkdir -p ~/.vim/autoload/
-    !curl -fLo ~/.vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	!mkdir -p ~/.vim/autoload/
+	!curl -fLo ~/.vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 endif
 
 call plug#begin()
@@ -22,12 +22,11 @@ Plug 'nanotech/jellybeans.vim'
 Plug 'fatih/molokai' 
 
 
-Plug 'rking/ag.vim'  "search
-"concider https://github.com/Chun-Yang/vim-action-ag
-"use sift for ag.vim
-let g:ag_prg="sift --no-color -n"
-let g:ag_highlight=1
-let g:ag_format="%f:%l:%m"
+Plug 'SirVer/ultisnips'
+
+Plug 'mileszs/ack.vim'
+
+let g:ackprg = 'rg --vimgrep --no-heading'
 
 Plug 'ctrlpvim/ctrlp.vim' "find files
 Plug 'tpope/vim-unimpaired' "navigage in files
@@ -37,7 +36,6 @@ Plug 'elzr/vim-json', { 'for': 'json' } "json
 Plug 'tpope/vim-endwise'
 Plug 'junegunn/vim-easy-align' "align text
 
-"Plug 'ervandew/supertab'       " tab completion
 Plug 'sickill/vim-pasta'       " enhances the default paste command ('p')
 
 Plug 'myusuf3/numbers.vim' "line numbering done right
@@ -60,66 +58,13 @@ Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 " Make % match xml tags
 Plug 'edsono/vim-matchit', { 'for': ['html', 'xml'] }
 
-Plug 'fatih/vim-go',  { 'for' : 'go' }
-Plug 'Shougo/neocomplete'
-Plug 'Shougo/neosnippet'
-Plug 'Shougo/neosnippet-snippets'
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-" Use neocomplete.
-let g:neocomplete#enable_at_startup = 1
-" Use smartcase.
-let g:neocomplete#enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-
-" Define dictionary.
-let g:neocomplete#sources#dictionary#dictionaries = {
-    \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scheme' : $HOME.'/.gosh_completions'
-        \ }
-
-" Define keyword.
-if !exists('g:neocomplete#keyword_patterns')
-    let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-" Enable heavy omni completion.
-if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
-endif
-
-let g:neocomplete#sources#omni#input_patterns.go = '[^.[:digit:] *\t]\.\w*'
-
-
-" Plugin key-mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-
-" SuperTab like snippets behavior.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-
-imap <expr><TAB>
-  \ pumvisible() ? "\<C-n>" :
-  \ neosnippet#expandable_or_jumpable() ?
- \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+Plug 'fatih/vim-go',  { 'for' : 'go', 'branch': 'vim-8.0' }
+Plug 'maralla/completor.vim'
+let g:completor_go_omni_trigger = '(?:\b[^\W\d]\w*|[\]\)])\.(?:[^\W\d]\w*)?'
 
 " For conceal markers.
 if has('conceal')
-  set conceallevel=2 concealcursor=niv
+	set conceallevel=2 concealcursor=niv
 endif
 
 "go keybings
@@ -139,12 +84,12 @@ let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 
 Plug 'scrooloose/nerdtree'
-Plug 'taiansu/nerdtree-ag'
+Plug 'tyok/nerdtree-ack'
 
 Plug 'tpope/vim-dispatch' "dispatch command async
 
 "Git stuff
-Plug 'tpope/vim-fugitive' 
+Plug 'tpope/vim-fugitive'
 Plug 'idanarye/vim-merginal' "git branch stuff
 Plug 'int3/vim-extradite' "git log stuff
 Plug 'airblade/vim-gitgutter'
@@ -155,18 +100,18 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'mhinz/vim-startify'
 
 " Return to last edit position when opening files, except git commit message
- autocmd BufReadPost *
-   \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
-    \   exe "normal g`\"" |
-    \ endif
+autocmd BufReadPost *
+			\ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
+			\   exe "normal g`\"" |
+			\ endif
 
 " Ctrl-P
 let g:ctrlp_working_path_mode = 'rw'
 let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\v[\/]\.(git|hg|svn|sass-cache|pip_download_cache|wheel_cache)$',
-    \ 'file': '\v\.(png|jpg|jpeg|gif|DS_Store|pyc)$',
-    \ 'link': '',
-    \ }
+			\ 'dir':  '\v[\/]\.(git|hg|svn|sass-cache|pip_download_cache|wheel_cache)$',
+			\ 'file': '\v\.(png|jpg|jpeg|gif|DS_Store|pyc)$',
+			\ 'link': '',
+			\ }
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_clear_cache_on_exit = 0
 " Wait to update results (This should fix the fact that backspace is so slow)
@@ -174,33 +119,33 @@ let g:ctrlp_lazy_update = 1
 " Show as many results as our screen will allow
 let g:ctrlp_match_window = 'max:1000'
 
-  let g:ctrlp_abbrev = {
-    \ 'gmode': 'i',
-    \ 'abbrevs': [
-      \ {
-        \ 'pattern': '^shj',
-        \ 'expanded': 'fanmgmt/static/js/workflow',
-        \ 'mode': 'pfrz',
-      \ },
-      \ {
-        \ 'pattern': '^shh',
-        \ 'expanded': 'fanmgmt/templates/workflow/compliance_review/jst',
-        \ 'mode': 'pfrz',
-      \ }
-      \ ]
-    \ }
+let g:ctrlp_abbrev = {
+			\ 'gmode': 'i',
+			\ 'abbrevs': [
+			\ {
+			\ 'pattern': '^shj',
+			\ 'expanded': 'fanmgmt/static/js/workflow',
+			\ 'mode': 'pfrz',
+			\ },
+			\ {
+			\ 'pattern': '^shh',
+			\ 'expanded': 'fanmgmt/templates/workflow/compliance_review/jst',
+			\ 'mode': 'pfrz',
+			\ }
+			\ ]
+			\ }
 
 " If we have sift-tool
 if executable('sift')
-    " Use sift over grep
-    " set grepprg=ag\ --nogroup\ --nocolor
-      set grepprg=sift\ --no-color
-    " Use sift in CtrlP for listing files. Lightning fast and respects .gitignore
-    " let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-     let g:ctrlp_user_command = 'sift -i --no-conf --no-color --no-group --targets --exclude-dirs=".git" --exclude-ext="min.js,dat,exe,gif,png,jpeg,jpg,ico" %s'
+	" Use sift over grep
+	" set grepprg=ag\ --nogroup\ --nocolor
+	set grepprg=sift\ --no-color
+	" Use sift in CtrlP for listing files. Lightning fast and respects .gitignore
+	" let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+	let g:ctrlp_user_command = 'sift -i --no-conf --no-color --no-group --targets --exclude-dirs=".git" --exclude-ext="min.js,dat,exe,gif,png,jpeg,jpg,ico" %s'
 
-    "sift is fast enough that CtrlP doesn't need to cache
-     let g:etrlp_use_caching = 0
+	"sift is fast enough that CtrlP doesn't need to cache
+	let g:etrlp_use_caching = 0
 endif
 
 set directory^=$HOME/.vim/tmp//
@@ -220,12 +165,12 @@ nmap <silent> <Leader>c :bdelete<CR>
 au FileType go nmap <leader>r <Plug>(go-run)
 " run :GoBuild or :GoTestCompile based on the go file
 function! s:build_go_files()
-  let l:file = expand('%')
-  if l:file =~# '^\f\+_test\.go$'
-    call go#cmd#Test(0, 1)
-  elseif l:file =~# '^\f\+\.go$'
-    call go#cmd#Build(0)
-  endif
+	let l:file = expand('%')
+	if l:file =~# '^\f\+_test\.go$'
+		call go#cmd#Test(0, 1)
+	elseif l:file =~# '^\f\+\.go$'
+		call go#cmd#Build(0)
+	endif
 endfunction
 
 au FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
@@ -275,29 +220,53 @@ nnoremap <Leader>. :cd %:p:h<CR>:pwd<CR>
 nmap <silent> <Leader>ev :vsplit $HOME/.vimrc<CR>
 nmap <silent> <Leader>sv :source $HOME/.vimrc<CR>
 
-" neocomlpete and neocomplete snippets
-inoremap <expr><C-g>     neocomplete#undo_completion()
-inoremap <expr><C-l>     neocomplete#complete_common_string()
-
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return pumvisible() ? "\<C-y>" : "\<CR>"
-endfunction
-
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-
 Plug 'sjl/gundo.vim' 
 Plug 'mjakl/vim-asciidoc'
 Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
 
+" ==================== UltiSnips ====================
+function! g:UltiSnips_Complete()
+	call UltiSnips#ExpandSnippet()
+	if g:ulti_expand_res == 0
+		if pumvisible()
+			return "\<C-n>"
+		else
+			call UltiSnips#JumpForwards()
+			if g:ulti_jump_forwards_res == 0
+				return "\<TAB>"
+			endif
+		endif
+	endif
+	return ""
+endfunction
+
+function! g:UltiSnips_Reverse()
+	call UltiSnips#JumpBackwards()
+	if g:ulti_jump_backwards_res == 0
+		return "\<C-P>"
+	endif
+
+	return ""
+endfunction
+
+
+if !exists("g:UltiSnipsJumpForwardTrigger")
+	let g:UltiSnipsJumpForwardTrigger = "<tab>"
+endif
+
+if !exists("g:UltiSnipsJumpBackwardTrigger")
+	let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+endif
+
+au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
+au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsJumpBackwardTrigger . " <C-R>=g:UltiSnips_Reverse()<cr>"
+
 "i like dark things and small tabstops
 set ts=2
 set background=dark
-colo jellybeans
+colo solarized
 let g:airline_theme='jellybeans'
 
 " tips
@@ -310,6 +279,7 @@ map <F5> :GundoToggle<CR>
 " to focus tagbar or nerdtree easily
 nmap <silent> <Leader>z :TagbarOpen fj<CR>
 nmap <silent> <Leader>zz :NERDTree<CR>
+nnoremap <Leader>f :Ack!<Space>
 
 " navigate windws quicker
 nnoremap <C-h> <C-w>h
@@ -323,3 +293,10 @@ nmap <C-[> <C-T>
 autocmd Filetype gitcommit setlocal spell textwidth=72
 
 set sw=2
+if executable("rg")
+	set grepprg=rg\ --vimgrep\ --no-heading
+	set grepformat=%f:%l:%c:%m,%f:%l:%m
+endif
+
+
+
