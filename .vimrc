@@ -1,4 +1,4 @@
-"Inspiration: 
+"Inspiration:
 "https://github.com/captbaritone/dotfiles/blob/master/vimrc
 
 "load plug vim if we do not have it yet
@@ -18,13 +18,11 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
 Plug 'altercation/vim-colors-solarized' "pretty colors
-Plug 'nanotech/jellybeans.vim' 
-Plug 'fatih/molokai' 
-
+Plug 'nanotech/jellybeans.vim'
+Plug 'fatih/molokai'
 
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-
 
 Plug 'mileszs/ack.vim'
 
@@ -222,7 +220,7 @@ nnoremap <Leader>. :cd %:p:h<CR>:pwd<CR>
 nmap <silent> <Leader>ev :vsplit $HOME/.vimrc<CR>
 nmap <silent> <Leader>sv :source $HOME/.vimrc<CR>
 
-Plug 'sjl/gundo.vim' 
+Plug 'sjl/gundo.vim'
 Plug 'mjakl/vim-asciidoc'
 Plug 'ryanoasis/vim-devicons'
 
@@ -273,7 +271,7 @@ let g:airline_theme='jellybeans'
 
 " tips
 " CTRL-6, back to last buffer
-"open or close the right or left drawer, files or tags 
+"open or close the right or left drawer, files or tags
 map <F2> :NERDTreeToggle<CR>
 map <F3> :Tagbar<CR>
 map <F5> :GundoToggle<CR>
@@ -291,7 +289,7 @@ nnoremap <C-l> <C-w>l
 
 
 nmap <C-[> <C-T>
-"spellcheck and tw for git commits 
+"spellcheck and tw for git commits
 autocmd Filetype gitcommit setlocal spell textwidth=72
 
 set sw=2
@@ -300,5 +298,11 @@ if executable("rg")
 	set grepformat=%f:%l:%c:%m,%f:%l:%m
 endif
 
+fun! TrimWhitespace()
+    let l:save = winsaveview()
+    %s/\s\+$//e
+    call winrestview(l:save)
+endfun
+:noremap <Leader>w :call TrimWhitespace()<CR>
 
 
