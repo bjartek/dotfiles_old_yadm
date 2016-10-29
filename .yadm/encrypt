@@ -1,4 +1,5 @@
 .ssh/id_dsa
+.ssh/id_rsa
 .config/keybase/config.json
 .config/omf/secret.fish
 bin/prowl

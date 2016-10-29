@@ -95,3 +95,4 @@ export PS4='(${BASH_SOURCE}:${LINENO}): - [${SHLVL},${BASH_SUBSHELL},$?] $ '
 
 source <(oc completion zsh)
 export PATH="/usr/local/sbin:$PATH"
+alias gpg=gpg1
