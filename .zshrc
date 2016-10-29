@@ -29,7 +29,7 @@ source $HOME/.config/sourcecodepro.sh
 openshift_cluster(){
 			  local cluster=ose2
 				local project=aurora
-#        echo -n "\uE895 $cluster \uE817 $project" 
+#        echo -n "\uE895 $cluster \uE817 $project"
         echo ""
 }
 
@@ -86,9 +86,12 @@ fi
 export LANG=en_US.UTF-8
 export MAVEN_OPTS="-Xmx3072m -XX:MaxPermSize=512m"
 export GOPATH=$HOME/go
+export GOROOT=$(go env GOROOT)
+
 export PATH=$HOME/bin:$PATH;
-export PATH=$PATH:$GOPATH/bin:/usr/local/opt/go/libexec/bin
+export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
 
 export PS4='(${BASH_SOURCE}:${LINENO}): - [${SHLVL},${BASH_SUBSHELL},$?] $ '
 
 source <(oc completion zsh)
+export PATH="/usr/local/sbin:$PATH"
