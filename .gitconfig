@@ -5,6 +5,7 @@
 [user]
   email = bjarte@bjartek.org
 	name = Bjarte Stien Karlsen
+	signingkey = 626B2F3A
 [github]
   user = bjartek
 [core]
