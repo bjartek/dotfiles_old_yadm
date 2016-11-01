@@ -99,3 +99,5 @@
 	cmd = vim -f -c \"Gdiff\" \"$MERGED\"
 [gpg]
 	program = gpg1
+[url "git@github.com:"]
+	insteadOf = gh:
